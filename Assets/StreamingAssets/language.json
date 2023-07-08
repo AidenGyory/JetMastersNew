@@ -20,6 +20,7 @@
     "exitGame": "Exit Game",
     "loadGame": "Load Game",
     "checkProgress": "Hold up! \n You have saved progress! \nIf you continue, you will lose your progress! \nWould you like to continue? ",
+    "launch": "Launch",
     "pantry": "Pantry",
     "purchasePan": "Purchase Pan  <color=#F9DD3B>{0}</color>",
     "autoSave": "...Auto Saving Complete"
