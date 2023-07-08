@@ -85,6 +85,11 @@ public class GameManager : MonoBehaviour
         LOLSDK.Instance.CompleteGame();
     }
 
+    // Read progress points to check current progress
+    public int ReadProgress()
+    {
+        return complete; 
+    }
     //Call this at approprite times to update student's progress visible to teacher
     //e.g. call at the end of a level
     //score can be 0 if the game doesn't have score
