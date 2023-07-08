@@ -1397,8 +1397,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 42.5, y: 2.500001}
-  m_SizeDelta: {x: -135, y: -55}
+  m_AnchoredPosition: {x: 42.5, y: -7.5}
+  m_SizeDelta: {x: -135, y: -35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1186033244
 MonoBehaviour:
@@ -1449,10 +1449,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.7
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2224,6 +2224,8 @@ GameObject:
   - component: {fileID: 2062149464}
   - component: {fileID: 2062149466}
   - component: {fileID: 2062149465}
+  - component: {fileID: 2062149468}
+  - component: {fileID: 2062149467}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -2290,6 +2292,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062149463}
   m_CullTransparentMesh: 1
+--- !u!114 &2062149467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062149463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724941ef85cd0ec4b9652a274d0216ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typingSpeed: 0.2
+  textToType: 
+  textComponent: {fileID: 1186033244}
+--- !u!114 &2062149468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062149463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42d9d1419a74814aa2e4029bb34f07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriter: {fileID: 0}
+  npcName: {fileID: 2117934992}
+  dialogueLines: []
+  WhenDialogueFinishes:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2117934990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: 45}
+  m_AnchoredPosition: {x: 110, y: 40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2117934992
