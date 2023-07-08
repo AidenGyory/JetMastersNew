@@ -7,8 +7,8 @@ public class SpaceShipController : MonoBehaviour
     //Components
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] PhysicsInformation physicInformation;
-    [SerializeField] FuelSystem fuelSystem;
+    //[SerializeField] PhysicsInformation physicInformation;
+    //[SerializeField] FuelSystem fuelSystem;
 
     [Header("Movement Paramaters")]
     //Forward movement
@@ -138,7 +138,7 @@ public class SpaceShipController : MonoBehaviour
         leftThrusterEffect.SetActive(true);
 
         //use fuel
-        fuelSystem?.UseFuel(fuelUsage);
+        //fuelSystem?.UseFuel(fuelUsage);
 
         
     }
@@ -150,7 +150,7 @@ public class SpaceShipController : MonoBehaviour
         rightThrusterEffect.SetActive(true);
 
         //use fuel
-        fuelSystem?.UseFuel(fuelUsage);
+        //fuelSystem?.UseFuel(fuelUsage);
     }
 
     //Moves the ship in the forward direction using acceleration to push it forward with force
@@ -164,7 +164,7 @@ public class SpaceShipController : MonoBehaviour
         if(currentThrust > maxThrust) currentThrust = maxThrust;
 
         //use fuel
-        fuelSystem?.UseFuel(fuelUsage);
+        //fuelSystem?.UseFuel(fuelUsage);
 
         //Set the speedometer
        if(speedometer !=null) speedometer.SetRotation(currentThrust / maxThrust);
@@ -175,7 +175,7 @@ public class SpaceShipController : MonoBehaviour
     //If the ship is over the speed limit it crashes
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Asteroid") && physicInformation.speed > speedLimit)
+        if (other.gameObject.CompareTag("Asteroid")) //&& physicInformation.speed > speedLimit)
         {
             CrashShip();
         }
