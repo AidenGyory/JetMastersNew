@@ -993,7 +993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4039149605140216601, guid: 22b2258f0a96ac045a38fd3599d3119d, type: 3}
       propertyPath: progressRequiredToUnlock
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7645395448811332016, guid: 22b2258f0a96ac045a38fd3599d3119d, type: 3}
       propertyPath: m_Pivot.x

@@ -23,7 +23,7 @@ public class DialogueController : MonoBehaviour
     private string textToWrite;
     private int index;
 
-    public UnityEvent WhenDialogueFinishes; 
+    
 
     private void Start()
     {
@@ -67,7 +67,7 @@ public class DialogueController : MonoBehaviour
         }
         else
         {
-            WhenDialogueFinishes?.Invoke();
+            
         }
     }
     
@@ -77,5 +77,15 @@ public class DialogueController : MonoBehaviour
         {
             typewriter.CompleteTypeWriter();
         }
+    }
+
+    public bool CheckLastLine()
+    {
+        if (index >= dialogueLines.Count -1)
+        {
+            return true; 
+        }
+
+        return false; 
     }
 }
