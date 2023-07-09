@@ -44,7 +44,7 @@ public class MainForwardThruster : MonoBehaviour
         //Reduce thurst
         if(currentThrust > 1f && !thrustingForward)
         {
-            currentThrust -= currentThrust * Time.deltaTime;
+            currentThrust = 0.1f;
         }
     }
 

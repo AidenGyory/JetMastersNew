@@ -13,18 +13,8 @@ public class LaunchPad : MonoBehaviour
         landingPad.SetActive(isLandingPad);
     }
 
-    
     public void TurnOnLandingPad()
     {
         landingPad.SetActive(true);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            //Add code for finishing level
-            Debug.Log("landed!! "); 
-        }
     }
 }

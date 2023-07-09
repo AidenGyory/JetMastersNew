@@ -22,6 +22,7 @@ public class StartButtonScript : MonoBehaviour
 
     public void NewGame()
     {
+        GameManager.Instance.SetProgress(0);
         OnNewGamePressed?.Invoke();
     }
     public void LoadGame()

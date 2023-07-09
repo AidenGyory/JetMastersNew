@@ -90,6 +90,12 @@ public class GameManager : MonoBehaviour
     {
         return complete; 
     }
+
+    public void SetProgress(int progress)
+    {
+        complete = progress;
+    }
+
     //Call this at approprite times to update student's progress visible to teacher
     //e.g. call at the end of a level
     //score can be 0 if the game doesn't have score
