@@ -19,7 +19,7 @@ public class TextController : MonoBehaviour
             //Dont TTS in editor because its not supported
             //Test correct functionality using the harness on the dev portal
 #if !UNITY_EDITOR
-            LOLSDK.Instance.SpeakText(arg);
+            LoLSDK.LOLSDK.Instance.SpeakText(arg);
 #endif
         }
 

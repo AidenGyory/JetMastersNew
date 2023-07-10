@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class DialogueController : MonoBehaviour
 {
@@ -23,7 +22,7 @@ public class DialogueController : MonoBehaviour
     private string textToWrite;
     private int index;
 
-    
+    public UnityEvent whenDialogueFinishes;
 
     private void Start()
     {
@@ -34,7 +33,7 @@ public class DialogueController : MonoBehaviour
         }
     }
 
-    public void TypeLine(int lineIndex)
+    void TypeLine(int lineIndex)
     {
         npcName.text = FindAndSpeakText(dialogueLines[lineIndex].npcName,false);
         textToWrite = FindAndSpeakText(dialogueLines[lineIndex].keyword,true);
@@ -43,14 +42,14 @@ public class DialogueController : MonoBehaviour
     }
     
     
-    public string FindAndSpeakText(string arg, bool speaktext = true)
+    string FindAndSpeakText(string arg, bool speaktext = true)
     {
         if (speaktext)
         {
             //Dont TTS in editor because its not supported
             //Test correct functionality using the harness on the dev portal
 #if !UNITY_EDITOR
-            LOLSDK.Instance.SpeakText(arg);
+            LoLSDK.LOLSDK.Instance.SpeakText(arg);
 #endif
         }
 
@@ -58,16 +57,17 @@ public class DialogueController : MonoBehaviour
         return SharedState.LanguageDefs[arg];
     }
 
-    public void NextLine()
+    void NextLine()
     {
-        index++;
-        if (index <= dialogueLines.Count)
+        if (index < dialogueLines.Count-1)
         {
+            index++;
             TypeLine(index); 
         }
         else
         {
-            
+            //finish dialogue
+            whenDialogueFinishes?.Invoke();
         }
     }
     
@@ -75,7 +75,16 @@ public class DialogueController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            typewriter.CompleteTypeWriter();
+            InputContinue();
+        }
+    }
+
+    public void InputContinue()
+    {
+        //check if the line was still typing or not
+        if (!typewriter.CompleteTypeWriter())
+        {
+            NextLine();
         }
     }
 

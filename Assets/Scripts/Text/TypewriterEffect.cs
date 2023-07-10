@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -10,8 +9,6 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] private float typingSpeed;  // The speed at which characters are "typed"
     
     [SerializeField] private TMP_Text textComponent;
-    [SerializeField] private UnityEvent whenLineIsFinished;
-    [SerializeField] private UnityEvent whenDialogueFinishes; 
 
     private string textToType;
     private Coroutine typingCoroutine;
@@ -44,17 +41,17 @@ public class TypewriterEffect : MonoBehaviour
 
         if (controller.CheckLastLine())
         {
-            whenDialogueFinishes?.Invoke();
+            controller.whenDialogueFinishes?.Invoke();
         }
         else
         {
-            whenLineIsFinished?.Invoke();
+            //whenLineIsFinished?.Invoke();
         }
         typingCoroutine = null; 
         // Reset the typing coroutine reference
     }
     
-    public void CompleteTypeWriter()
+    public bool CompleteTypeWriter()
     {
         // If the spacebar is pressed, complete the current typewriter effect immediately
         if (typingCoroutine != null)
@@ -62,6 +59,9 @@ public class TypewriterEffect : MonoBehaviour
             StopCoroutine(typingCoroutine);
             textComponent.text = textToType;  // Set the full text immediately
             typingCoroutine = null;
+            return true;
         }
+        //typewriter already completed
+        return false;
     }
 }
