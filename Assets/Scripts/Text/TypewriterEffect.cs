@@ -41,7 +41,7 @@ public class TypewriterEffect : MonoBehaviour
 
         if (controller.CheckLastLine())
         {
-            controller.whenDialogueFinishes?.Invoke();
+            controller.FinishDialogue();
         }
         else
         {

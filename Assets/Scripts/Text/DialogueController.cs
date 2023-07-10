@@ -22,9 +22,7 @@ public class DialogueController : MonoBehaviour
     private string textToWrite;
     private int index;
 
-    public UnityEvent whenDialogueFinishes;
-
-    private void Start()
+    public void StartDialogue()
     {
         if (dialogueLines.Count > 0)
         {
@@ -67,7 +65,7 @@ public class DialogueController : MonoBehaviour
         else
         {
             //finish dialogue
-            whenDialogueFinishes?.Invoke();
+            FinishDialogue();
         }
     }
     
@@ -96,5 +94,10 @@ public class DialogueController : MonoBehaviour
         }
 
         return false; 
+    }
+
+    public void FinishDialogue()
+    {
+        LevelManager.Instance.FinishDialogue();
     }
 }

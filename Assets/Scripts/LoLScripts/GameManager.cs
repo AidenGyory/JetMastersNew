@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     const int maxProgress = 8; //Must be atleast 8
 
     [SerializeField] Button btnNew, btnCont;
+    public bool levelReset = false;
 
 
     private void Awake()

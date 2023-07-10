@@ -160,11 +160,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5137748496181221993}
   - component: {fileID: 5137748496181221999}
-  - component: {fileID: 5137748496181221998}
-  - component: {fileID: 5137748496181221996}
+  - component: {fileID: 5035837796629699538}
+  - component: {fileID: 6541964919044160990}
   m_Layer: 5
   m_Name: PlayerSpaceship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +213,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5137748496181221998
+--- !u!114 &5035837796629699538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,31 +222,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 5137748496181221992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df8edd9f19b801478a5956dd478029a, type: 3}
+  m_Script: {fileID: 11500000, guid: e562f850f49015b4ea289b5745c5bcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5137748496181221999}
   forwardThrusterEffect: {fileID: 5137748494975536980}
+  leftThrusterEffect: {fileID: 5137748496656861069}
+  rightThrusterEffect: {fileID: 5137748496150570999}
+  spaceShip: {fileID: 5137748496307968127}
+  spaceShipBroken: {fileID: 21300000, guid: 7ac3683169cd1e849b2e8f2f8cf9b42b, type: 3}
   thrustingForward: 0
   currentThrust: 1
   maxThrust: 2000
   velocityRead: 0
---- !u!114 &5137748496181221996
-MonoBehaviour:
+  rotateSpeed: 50
+--- !u!61 &6541964919044160990
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5137748496181221992}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d1609718142f047acadeb5e14bc316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5137748496181221999}
-  rotateSpeed: 50
-  leftThrusterEffect: {fileID: 5137748496150570999}
-  rightThrusterEffect: {fileID: 5137748496656861069}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 24, y: 22}
+  m_EdgeRadius: 0
 --- !u!1 &5137748496307968120
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +273,7 @@ GameObject:
   - component: {fileID: 5137748496307968121}
   - component: {fileID: 5137748496307968124}
   - component: {fileID: 5137748496307968127}
-  - component: {fileID: 5137748496307968126}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: SpaceshipIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,22 +337,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!58 &5137748496307968126
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5137748496307968120}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 12
 --- !u!1 &5137748496656861069
 GameObject:
   m_ObjectHideFlags: 0
