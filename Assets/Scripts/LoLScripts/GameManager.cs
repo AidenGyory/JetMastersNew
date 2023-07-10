@@ -5,6 +5,7 @@ using LoLSDK;
 using UnityEngine.UI;
 using SimpleJSON;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SaveData
@@ -54,17 +55,20 @@ public class GameManager : MonoBehaviour
     //The savedata is loaded from the LoL sever through the SDK through the LoLSDKHelper class
     void Load(SaveData savedata)
     {
-        //start from the beginning of the game
+        //If no save data is passed, start from the beginning of the game
         if (savedata == null)
         {
             //DO STUFF TO START FROM BEGINNING
+            complete = 0;
+            SceneManager.LoadScene("LevelSelect");
             return;
         }
 
         //OTHERWISE, DO STUFF TO LOAD GAME DATA
         //e.g. read level number in savedata, changescene to that level
         //Update the progression variable
-
+        complete = savedata.currentLevel;
+        SceneManager.LoadScene("LevelSelect");
     }
 
     public void Save()
@@ -72,7 +76,7 @@ public class GameManager : MonoBehaviour
         SaveData dataToSave = new SaveData();
 
         //IMPLEMENT DATA YOU WANT TO SAVE
-        //e.g dataToSave.currentLevel = (current level variable)
+        dataToSave.currentLevel = complete;
 
         //Saves the data to LoL servers through the SDK
         LOLSDK.Instance.SaveState(dataToSave);
