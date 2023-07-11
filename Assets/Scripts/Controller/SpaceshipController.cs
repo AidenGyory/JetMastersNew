@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,17 +34,14 @@ public class SpaceshipController : MonoBehaviour
 
     private void Update()
     {
+        GetComponent<Speedometer>().SetRotation(currentThrust);
         //Takes input from keyboard and UI
         HandleInput();
 
         //Read Velocity from rigidbody 
         velocityRead = rb.velocity.magnitude;
 
-        //Handles forward thrust
-        if (thrustingForward)
-        {
-            ThrustForward();
-        }
+        
         //Reduce thurst
         if (currentThrust > 1f && !thrustingForward)
         {
@@ -59,6 +57,12 @@ public class SpaceshipController : MonoBehaviour
         {
             rb.AddTorque(rotateSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //Handles forward thrust
+        ThrustForward();
     }
 
     private void HandleInput()
@@ -100,7 +104,7 @@ public class SpaceshipController : MonoBehaviour
     public void ThrustForward()
     {
         //Handle Acceleration
-        currentThrust += currentThrust * Time.deltaTime * 8;
+        currentThrust += currentThrust;
 
         // cap Thrust 
         if (currentThrust > maxThrust)
