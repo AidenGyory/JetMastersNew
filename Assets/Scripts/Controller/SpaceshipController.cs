@@ -16,6 +16,10 @@ public class SpaceshipController : MonoBehaviour
     [SerializeField] GameObject rightThrusterEffect;
     [SerializeField] Image spaceShip;
     [SerializeField] Sprite spaceShipBroken;
+    [Header("Fuel Components")]
+    public float maxFuel;
+    public float currentFuel; 
+
     [Header("Forward Thrust")]
     //These variables control the ship
     //Using bools so we can use both keyboard input and screen controls
@@ -27,37 +31,61 @@ public class SpaceshipController : MonoBehaviour
     public float velocityRead;
     [Header("Rotation")]
     [SerializeField] float rotateSpeed;
+    [SerializeField] float slowdownOnRotate;
+    [SerializeField] Speedometer speedometer; 
 
 
     bool rotateLeft;
     bool rotateRight;
 
+    private void Start()
+    {
+        currentFuel = maxFuel; 
+
+        if (speedometer == null)
+        {
+            speedometer = GameObject.FindObjectOfType<Speedometer>();
+        }
+    }
+
     private void Update()
     {
-        GetComponent<Speedometer>().SetRotation(currentThrust);
         //Takes input from keyboard and UI
         HandleInput();
 
         //Read Velocity from rigidbody 
         velocityRead = rb.velocity.magnitude;
+        speedometer.SetRotation(velocityRead);
 
-        
+
         //Reduce thurst
         if (currentThrust > 1f && !thrustingForward)
         {
             currentThrust = 0.1f;
+        }
+        if(thrustingForward)
+        {
+            if(currentFuel > 0)
+            {
+                currentFuel -= Time.deltaTime; 
+            }
         }
 
         //Add Torque to rotate spaceship
         if (rotateLeft)
         {
             rb.AddTorque(-rotateSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            currentThrust -= Time.deltaTime * slowdownOnRotate;
         }
         if (rotateRight)
         {
             rb.AddTorque(rotateSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            currentThrust -= Time.deltaTime * slowdownOnRotate;
         }
+
+        if (currentThrust < 0) { currentThrust = 0.1f; }
     }
+
 
     private void FixedUpdate()
     {
@@ -79,22 +107,23 @@ public class SpaceshipController : MonoBehaviour
             ClickLaunch(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            ClickRight(true);
-        }
-        else if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            ClickRight(false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             ClickLeft(true);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A))
         {
             ClickLeft(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        {
+            ClickRight(true);
+
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D))
+        {
+            ClickRight(false);
         }
 
     }

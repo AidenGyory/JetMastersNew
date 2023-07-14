@@ -2478,26 +2478,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184838600}
   m_CullTransparentMesh: 1
---- !u!1 &1226138844 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5137748496181221992, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
-  m_PrefabInstance: {fileID: 5137748495953591882}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1226138847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226138844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad7ae894e142b042b9bb953358147ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needleTransform: {fileID: 2114110691}
-  maxRotation: 50000
-  minRotation: 0
 --- !u!1 &1417976336
 GameObject:
   m_ObjectHideFlags: 0
@@ -3209,6 +3189,18 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1303148257036001742, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
+      propertyPath: m_Color.b
+      value: 0.1782589
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303148257036001742, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303148257036001742, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4007111738988793676, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3309,6 +3301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VelocityUI
       objectReference: {fileID: 0}
+    - target: {fileID: 6651842810516394529, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7015773152541338129, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
       propertyPath: m_SizeDelta.x
       value: 16
@@ -3329,11 +3325,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6177272794501696935, guid: cfb44a4a059de7a44bd07d02cf4c220d, type: 3}
   m_PrefabInstance: {fileID: 6177272794215066170}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &2114110691 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6651842810516394529, guid: 905afa00987eccc4096fcb09aa3f296c, type: 3}
-  m_PrefabInstance: {fileID: 1922979757}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5137748495953591882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3344,6 +3335,10 @@ PrefabInstance:
     - target: {fileID: 5035837796629699538, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
       propertyPath: maxThrust
       value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035837796629699538, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
+      propertyPath: speedometer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5137748496181221992, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
       propertyPath: m_Name
@@ -3435,7 +3430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5137748496181221999, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
       propertyPath: m_GravityScale
-      value: 9.81
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
@@ -3444,7 +3439,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5035837796629699538, guid: ba1cc7d85ba9f3a438a3ec7ce8c12c91, type: 3}
   m_PrefabInstance: {fileID: 5137748495953591882}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226138844}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e562f850f49015b4ea289b5745c5bcee, type: 3}

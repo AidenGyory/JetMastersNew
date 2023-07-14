@@ -211,7 +211,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &5035837796629699538
 MonoBehaviour:
@@ -235,7 +235,8 @@ MonoBehaviour:
   currentThrust: 1
   maxThrust: 2000
   velocityRead: 0
-  rotateSpeed: 50
+  rotateSpeed: 25
+  slowdownOnRotate: 15
 --- !u!61 &6541964919044160990
 BoxCollider2D:
   m_ObjectHideFlags: 0

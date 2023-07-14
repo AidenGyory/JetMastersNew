@@ -10,7 +10,7 @@ public class TypewriterEffect : MonoBehaviour
     
     [SerializeField] private TMP_Text textComponent;
 
-    private string textToType;
+    private int characterCount;
     private Coroutine typingCoroutine;
 
     public void StartTypewriterEffect(string text)
@@ -21,9 +21,9 @@ public class TypewriterEffect : MonoBehaviour
             
             StopCoroutine(typingCoroutine);
         }
-
-        textToType = text;
-        textComponent.text = string.Empty;  // Clear the text component
+        
+        textComponent.text = text;  // Clear the text component
+        characterCount = textComponent.GetTextInfo(text).characterCount;
 
         // Start the typewriter coroutine
         typingCoroutine = StartCoroutine(TypeText());
@@ -31,17 +31,15 @@ public class TypewriterEffect : MonoBehaviour
 
     private IEnumerator TypeText()
     {
-        foreach (char character in textToType)
+        for (int i = 1; i <= characterCount; i++)
         {
-            textComponent.text += character;  // Add the character to the text component
-
-            // Wait for the specified typing speed
+            textComponent.maxVisibleCharacters = i;
             yield return new WaitForSeconds(typingSpeed);
         }
 
         if (controller.CheckLastLine())
         {
-            controller.FinishDialogue();
+            //controller.FinishDialogue();
         }
         else
         {
@@ -57,7 +55,7 @@ public class TypewriterEffect : MonoBehaviour
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
-            textComponent.text = textToType;  // Set the full text immediately
+            textComponent.maxVisibleCharacters = characterCount;  // Set the full text immediately
             typingCoroutine = null;
             return true;
         }
