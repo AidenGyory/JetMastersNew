@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6979307579001783210}
-  typingSpeed: 0.01
+  typingSpeed: 0.02
   textComponent: {fileID: 6979307578938313386}
 --- !u!1 &6979307579063352184
 GameObject:
