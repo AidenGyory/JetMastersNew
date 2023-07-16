@@ -1,55 +1,68 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SpaceshipController : MonoBehaviour
 {
-    bool canMove = false;
-
-    [Header("Components")]
-    [SerializeField] Rigidbody2D rb;
-    [Header("Effects")]
-    [SerializeField] GameObject forwardThrusterEffect;
-    [SerializeField] GameObject leftThrusterEffect;
-    [SerializeField] GameObject rightThrusterEffect;
-    [SerializeField] Image spaceShip;
-    [SerializeField] Sprite spaceShipBroken;
+    [FormerlySerializedAs("coinsCollected")] public int tokensCollected; 
+    [SerializeField] private bool useFuel;
+    [SerializeField] private bool canRotate; 
     [Header("Fuel Components")]
     public float maxFuel;
-    public float currentFuel; 
-
-    [Header("Forward Thrust")]
-    //These variables control the ship
-    //Using bools so we can use both keyboard input and screen controls
-    public bool thrustingForward;
+    public float currentFuel;
     [Space]
     public float currentThrust;
-    [Space]
     public float maxThrust;
+    [Space]
     public float velocityRead;
-    [Header("Rotation")]
-    [SerializeField] float rotateSpeed;
-    [SerializeField] float slowdownOnRotate;
-    [SerializeField] Speedometer speedometer; 
-
-
-    bool rotateLeft;
-    bool rotateRight;
-
+    [Header("Image Components")]
+    [SerializeField] private Image spaceShip;
+    [SerializeField] private Sprite spaceShipBroken;
+    [Header("Effects")]
+    [SerializeField] private GameObject forwardThrusterEffect;
+    [SerializeField] private GameObject leftThrusterEffect;
+    [SerializeField] private GameObject rightThrusterEffect;
+    [Header("Thruster Toggles")]
+    [SerializeField] private bool thrustingForward;
+    [SerializeField] private bool rotateLeft;
+    [SerializeField] private bool rotateRight;
+    [Header("Rotation Components")]
+    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float slowdownOnRotate;
+    
+    // Private References 
+    private bool canMove;
+    private Rigidbody2D rb;
+    private Speedometer speedometer; 
+    
     private void Start()
     {
+        // Get reference to RigidBody
+        rb = GetComponent<Rigidbody2D>(); 
+        //Get reference to Speedometer 
+        speedometer = FindObjectOfType<Speedometer>();
+        // Set Fuel to maxFuel
         currentFuel = maxFuel; 
 
-        if (speedometer == null)
-        {
-            speedometer = GameObject.FindObjectOfType<Speedometer>();
-        }
+        
     }
 
     private void Update()
     {
+        // Run Update for Input if Spaceship Can Move
+        if (!canMove) return; 
+        
+        // Check if the spaceship has fuel
+        if (useFuel)
+        {
+            if (canMove && currentFuel < 1)
+            {
+                canMove = false;
+                Invoke(nameof(GameOver), 1f); 
+                return; 
+            }
+        }
+        
         //Takes input from keyboard and UI
         HandleInput();
 
@@ -70,7 +83,18 @@ public class SpaceshipController : MonoBehaviour
                 currentFuel -= Time.deltaTime; 
             }
         }
+        if (currentThrust < 0) { currentThrust = 0.1f; }
+    }
 
+
+    private void FixedUpdate()
+    {
+        //Handles forward thrust
+        ThrustForward();
+        
+        //Check if spaceship can Rotate
+        if(!canRotate) return; 
+        
         //Add Torque to rotate spaceship
         if (rotateLeft)
         {
@@ -82,22 +106,11 @@ public class SpaceshipController : MonoBehaviour
             rb.AddTorque(rotateSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
             currentThrust -= Time.deltaTime * slowdownOnRotate;
         }
-
-        if (currentThrust < 0) { currentThrust = 0.1f; }
-    }
-
-
-    private void FixedUpdate()
-    {
-        //Handles forward thrust
-        ThrustForward();
     }
 
     private void HandleInput()
     {
-        if (!canMove)
-            return;
-
+        // Forward Thruster Toggle
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ClickLaunch(true);
@@ -107,6 +120,7 @@ public class SpaceshipController : MonoBehaviour
             ClickLaunch(false);
         }
 
+        // Rotate Thrusters Toggles 
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             ClickLeft(true);
@@ -130,8 +144,10 @@ public class SpaceshipController : MonoBehaviour
 
     //Moves the ship in the forward direction using acceleration to push it forward with force
     //the acceleration is added to the current thrust to get the launching effect
-    public void ThrustForward()
+    private void ThrustForward()
     {
+        if (!canMove) return; 
+        
         //Handle Acceleration
         currentThrust += currentThrust;
 
@@ -141,7 +157,7 @@ public class SpaceshipController : MonoBehaviour
             currentThrust = maxThrust;
         }
 
-        rb.AddForce(transform.up * currentThrust * Time.fixedDeltaTime, ForceMode2D.Force);
+        rb.AddForce(transform.up * (currentThrust * Time.fixedDeltaTime), ForceMode2D.Force);
     }
 
     //These methods allow UI to control the ship
@@ -166,14 +182,26 @@ public class SpaceshipController : MonoBehaviour
     public void SpaceshipBroken()
     {
         canMove = false;
+        ClickLaunch(false);
+        ClickLeft(false);
+        ClickRight(false);
         spaceShip.sprite = spaceShipBroken;
-        //turn rb off
-        rb.simulated = false;
+        Invoke(nameof(GameOver), 1f); 
     }
 
     public void ToggleActive(bool active)
     {
         canMove = active;
-        rb.simulated = active;
+        if (rb != null)
+        {
+            rb.simulated = active;
+        }
+    }
+
+    public void GameOver()
+    {
+        Debug.LogAssertion("Spaceship has lost power!!");
+        rb.simulated = false;
+        LevelManager.Instance.LoseState();
     }
 }

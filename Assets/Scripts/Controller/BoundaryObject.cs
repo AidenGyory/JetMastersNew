@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoundaryObject : MonoBehaviour
@@ -8,7 +6,7 @@ public class BoundaryObject : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            LevelManager.Instance.LoseState();
+            other.GetComponent<SpaceshipController>().GameOver();
         }
     }
 }

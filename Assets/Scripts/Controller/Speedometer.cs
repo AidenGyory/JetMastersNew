@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; 
 
 public class Speedometer : MonoBehaviour
 {
-    //This script controls the needle on the spedometer
+    //This script controls the needle on the speedometer
     //Set a max and min rotation and use the set rotation method to use by giving it a normalized value
     [SerializeField] Transform needleTransform;
     [SerializeField] float maxRotation = 200.0f;
@@ -30,7 +28,5 @@ public class Speedometer : MonoBehaviour
         fill.fillAmount = t * maxFill;
 
         speedNumber.text = ((int)velocity).ToString();
-
-        Debug.Log((int)t); 
     }
 }

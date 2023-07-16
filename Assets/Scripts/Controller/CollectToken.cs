@@ -3,13 +3,15 @@ using UnityEngine.Events;
 
 public class CollectToken : MonoBehaviour
 {
-    [SerializeField] UnityEvent OnTrigger;
+    [SerializeField] private UnityEvent onTrigger;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            OnTrigger?.Invoke();
+            other.GetComponent<SpaceshipController>().tokensCollected++; 
+            onTrigger?.Invoke(); 
+            Destroy(gameObject);
         }
     }
 

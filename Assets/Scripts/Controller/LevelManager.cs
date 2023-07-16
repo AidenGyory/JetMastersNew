@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,7 +18,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    [Header("Conrollers")]
+    [Header("Controllers")]
     [SerializeField] DialogueController dialogueController;
     [SerializeField] SpaceshipController spaceshipController;
     [Header("Win/Loss")]

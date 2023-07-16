@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectiveMarker : MonoBehaviour
 {
+    
     // This class will be used to control a marker that points towards the objective attached to this object
     [SerializeField] Transform objective;
     // Determines how far from borders we would be
@@ -15,47 +15,38 @@ public class ObjectiveMarker : MonoBehaviour
     [SerializeField] float YminOffset = 0.05f;
     [SerializeField] float distanceFromMarker = 2;
     [SerializeField] GameObject marker;
+    [SerializeField] private GameObject icon; 
+    private Camera cam;
+    private void Start()
+    {
+        cam = FindObjectOfType<Camera>(); 
+    }
 
     private void Update()
     {
         MoveToObjective();
-        //ObjectiveVisible();
+        CheckMarkerDistance();
     }
 
     // Goes as close to the objective without going off the screen
-    public void MoveToObjective()
+    private void MoveToObjective()
     {
-        float dist = Vector3.Distance(transform.position, objective.position);
-        //Debug.Log(dist);
-
-
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(objective.position);
+        var viewPos = cam.WorldToViewportPoint(objective.position);
         viewPos.x = Mathf.Clamp(viewPos.x, XminOffset, XmaxOffSet);
         viewPos.y = Mathf.Clamp(viewPos.y, YminOffset, YmaxOffSet);
-        transform.position = Camera.main.ViewportToWorldPoint(viewPos);
-
-        if (dist > distanceFromMarker)
-        {
-            
-        }
-
+        transform.position = cam.ViewportToWorldPoint(viewPos);
+        
         // Look at the objective
-        transform.up = objective.position - transform.position;
+        marker.transform.up = Vector3.Lerp(marker.transform.up,objective.position - transform.position, 8f);
     }
-
-    void ObjectiveVisible()
+    private void CheckMarkerDistance()
     {
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(objective.position);
-
-        if (viewPos.x > 0 && viewPos.x < 1 && viewPos.y > 0 && viewPos.y < 1 && viewPos.z > 0)
-        {
-            marker.SetActive(false); // Objective is visible, turn off the marker game object
-            
-        }
-        else
-        {
-            marker.SetActive(true); // Objective is outside the screen view, turn on the marker game object
-            
-        }
+        var dist = Vector3.Distance(transform.position, objective.position);
+        ToggleMarkerUI(!(dist < distanceFromMarker));
+    }
+    private void ToggleMarkerUI(bool visibility)
+    {
+        marker.SetActive(visibility);
+        icon.SetActive(visibility);
     }
 }
