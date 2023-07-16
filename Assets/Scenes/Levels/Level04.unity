@@ -1993,11 +1993,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueController: {fileID: 787728062}
-  spaceshipController: {fileID: 5137748495953591883}
+  player: {fileID: 5137748495953591883}
   loseUI: {fileID: 1701862468}
   winUI: {fileID: 1073833000}
   levelNumber: 4
-  losingVelocity: 20
+  starsCollected: 0
+  tokensNeedForStar1: 0
+  tokensNeedForStar2: 3
+  tokensNeedForStar3: 7
 --- !u!4 &1009044810
 Transform:
   m_ObjectHideFlags: 0

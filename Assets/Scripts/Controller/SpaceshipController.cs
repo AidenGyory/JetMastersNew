@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SpaceshipController : MonoBehaviour
 {
-    [FormerlySerializedAs("coinsCollected")] public int tokensCollected; 
+    public int tokensCollected; 
     [SerializeField] private bool useFuel;
     [SerializeField] private bool canRotate; 
     [Header("Fuel Components")]
@@ -71,18 +71,12 @@ public class SpaceshipController : MonoBehaviour
         speedometer.SetRotation(velocityRead);
 
 
-        //Reduce thurst
+        //Reduce thrust
         if (currentThrust > 1f && !thrustingForward)
         {
             currentThrust = 0.1f;
         }
-        if(thrustingForward)
-        {
-            if(currentFuel > 0)
-            {
-                currentFuel -= Time.deltaTime; 
-            }
-        }
+
         if (currentThrust < 0) { currentThrust = 0.1f; }
     }
 
@@ -100,12 +94,39 @@ public class SpaceshipController : MonoBehaviour
         {
             rb.AddTorque(-rotateSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
             currentThrust -= Time.deltaTime * slowdownOnRotate;
+            //Reduce Fuel
+            if(useFuel)
+            {
+                if(currentFuel > 0)
+                {
+                    currentFuel -= Time.deltaTime; 
+                }
+            }
         }
         if (rotateRight)
         {
             rb.AddTorque(rotateSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
             currentThrust -= Time.deltaTime * slowdownOnRotate;
+            //Reduce Fuel
+            if(useFuel)
+            {
+                if(currentFuel > 0)
+                {
+                    currentFuel -= Time.deltaTime; 
+                }
+            }
         }
+        
+        // Reduce Fuel
+        if(thrustingForward && useFuel)
+        {
+            if(currentFuel > 0)
+            {
+                currentFuel -= Time.deltaTime; 
+            }
+        }
+        
+        
     }
 
     private void HandleInput()

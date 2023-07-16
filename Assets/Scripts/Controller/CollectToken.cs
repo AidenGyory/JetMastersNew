@@ -12,6 +12,7 @@ public class CollectToken : MonoBehaviour
             other.GetComponent<SpaceshipController>().tokensCollected++; 
             onTrigger?.Invoke(); 
             Destroy(gameObject);
+            LevelManager.Instance.CheckStarCritera();
         }
     }
 

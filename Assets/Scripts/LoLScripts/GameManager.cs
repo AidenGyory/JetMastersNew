@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LoLSDK;
 using UnityEngine.UI;
-using SimpleJSON;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +9,15 @@ public class SaveData
 {
     //SAVEDATA GOES HERE
     public int currentLevel;
+    
+    public int level1Stars; 
+    public int level2Stars; 
+    public int level3Stars; 
+    public int level4Stars; 
+    public int level5Stars; 
+    public int level6Stars; 
+    public int level7Stars; 
+    public int level8Stars; 
 }
 
 public class GameManager : MonoBehaviour
@@ -24,6 +30,16 @@ public class GameManager : MonoBehaviour
     [Header("Progression")]
     int complete = 0; //Progression
     const int maxProgress = 8; //Must be atleast 8
+    
+    //Stars for each level 
+    public int level1Stars; 
+    public int level2Stars; 
+    public int level3Stars; 
+    public int level4Stars; 
+    public int level5Stars; 
+    public int level6Stars; 
+    public int level7Stars; 
+    public int level8Stars;
 
     [SerializeField] Button btnNew, btnCont;
     public bool levelReset = false;
@@ -61,6 +77,14 @@ public class GameManager : MonoBehaviour
         {
             //DO STUFF TO START FROM BEGINNING
             complete = 0;
+            level1Stars = 0; 
+            level2Stars = 0; 
+            level3Stars = 0; 
+            level4Stars = 0; 
+            level5Stars = 0; 
+            level6Stars = 0; 
+            level7Stars = 0; 
+            level8Stars = 0; 
             SceneManager.LoadScene("LevelSelect");
             return;
         }
@@ -69,6 +93,14 @@ public class GameManager : MonoBehaviour
         //e.g. read level number in savedata, changescene to that level
         //Update the progression variable
         complete = savedata.currentLevel;
+        level1Stars = savedata.level1Stars; 
+        level2Stars = savedata.level2Stars; 
+        level3Stars = savedata.level3Stars; 
+        level4Stars = savedata.level4Stars; 
+        level5Stars = savedata.level5Stars; 
+        level6Stars = savedata.level6Stars; 
+        level7Stars = savedata.level7Stars; 
+        level8Stars = savedata.level8Stars; 
         SceneManager.LoadScene("LevelSelect");
     }
 
@@ -78,6 +110,14 @@ public class GameManager : MonoBehaviour
 
         //IMPLEMENT DATA YOU WANT TO SAVE
         dataToSave.currentLevel = complete;
+        dataToSave.level1Stars = level1Stars; 
+        dataToSave.level2Stars = level2Stars; 
+        dataToSave.level3Stars = level3Stars; 
+        dataToSave.level4Stars = level4Stars; 
+        dataToSave.level5Stars = level5Stars; 
+        dataToSave.level6Stars = level6Stars; 
+        dataToSave.level7Stars = level7Stars; 
+        dataToSave.level8Stars = level8Stars; 
 
         //Saves the data to LoL servers through the SDK
         LOLSDK.Instance.SaveState(dataToSave);
