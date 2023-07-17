@@ -225,4 +225,9 @@ public class SpaceshipController : MonoBehaviour
         rb.simulated = false;
         LevelManager.Instance.LoseState();
     }
+
+    public void RechargeFuel()
+    {
+        currentFuel = maxFuel; 
+    }
 }

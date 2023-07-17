@@ -10,6 +10,8 @@ public class TypewriterEffect : MonoBehaviour
     
     [SerializeField] private TMP_Text textComponent;
 
+    [SerializeField] private AudioSource typeSFX; 
+
     private int characterCount;
     private Coroutine typingCoroutine;
 
@@ -31,9 +33,11 @@ public class TypewriterEffect : MonoBehaviour
 
     private IEnumerator TypeText()
     {
+        
         for (int i = 1; i <= characterCount; i++)
         {
             textComponent.maxVisibleCharacters = i;
+            typeSFX.Play();
             yield return new WaitForSeconds(typingSpeed);
         }
 

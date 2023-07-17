@@ -32,7 +32,7 @@
     "cancel": "Cancel",
     "exitGame": "Exit Game",
     "loadGame": "Load Game",
-    
+
     "checkProgress": "Hold up! \n You have saved progress! \n<color=#FF0000>If you continue, you will lose your progress!</color> \nWould you like to continue? ",
     "Level1NPC": "CADET INSTRUCTOR",
     "Level1Line1": "Welcome to the space program Cadet! I will be your Instructor before you get into orbit! ",
@@ -76,7 +76,15 @@
     "Level6Line5": "<color=#FFDD00>It's like a cosmic game of catch! We'll both experience those equal and opposite reactions as we toss things around in space.</color>",
     "Level6Line6": "Remember, even something as simple as throwing a balloon can have fascinating consequences in zero gravity, all because of <color=#FFDD00>Newton's Third Law!</color>",
     "Level6Line7": "So, next time we're floating in space together, let's have a balloon-throwing competition and see who can maneuver the most gracefully! Sound like fun?",
-    
+    "Level7NPC": "SPACE CADET",
+    "Level7Line1": "Thanks so much for saving me! I could have been floating around forever!",
+    "Level7Line2": "Since your last mission I've been brushing up on my <color=#FFDD00>Newton's Third Law of Motion. </color>",
+    "Level7Line3": "<color=#FFDD00>According to Newton's Third Law, as I throw the balloon forward, I'll experience an equal and opposite reaction backward.</color>",
+    "Level7Line4": "<color=#FFDD00>So, while the balloon zooms towards you, pushing you backward, I'll find myself drifting in the opposite direction, thanks to the force of the balloon pushing me backward.</color>",
+    "Level7Line5": "<color=#FFDD00>It's like a cosmic game of catch! We'll both experience those equal and opposite reactions as we toss things around in space.</color>",
+    "Level7Line6": "Remember, even something as simple as throwing a balloon can have fascinating consequences in zero gravity, all because of <color=#FFDD00>Newton's Third Law!</color>",
+    "Level7Line7": "So, next time we're floating in space together, let's have a balloon-throwing competition and see who can maneuver the most gracefully! Sound like fun?",
+
     "launch": "Launch",
     "pantry": "Pantry",
     "purchasePan": "Purchase Pan  <color=#F9DD3B>{0}</color>",
