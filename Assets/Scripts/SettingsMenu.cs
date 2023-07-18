@@ -15,13 +15,15 @@ public class SettingsMenu : MonoBehaviour
 
     public void MusicON()
     {
-        Debug.Log("Sound ON");
-        //TODO: Add Audio Manager 
+        GameManager.Instance.ToggleSound(true);
+        GameManager.Instance.GetComponent<AudioSource>().Play();
     }
 
     public void MusicOFF()
     {
-        Debug.Log("Sound OFF");
+        GameManager.Instance.ToggleSound(false);
+        GameManager.Instance.GetComponent<AudioSource>().Stop();
+
     }
     
     public void ResetLevel()

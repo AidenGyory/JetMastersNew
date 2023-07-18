@@ -30,7 +30,9 @@ public class LevelManager : MonoBehaviour
     [Space]
     [SerializeField] private int tokensNeedForStar1; 
     [SerializeField] private int tokensNeedForStar2; 
-    [SerializeField] private int tokensNeedForStar3; 
+    [SerializeField] private int tokensNeedForStar3;
+
+     
 
     private void Start()
     {

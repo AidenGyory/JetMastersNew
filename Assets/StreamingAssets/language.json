@@ -32,6 +32,7 @@
     "cancel": "Cancel",
     "exitGame": "Exit Game",
     "loadGame": "Load Game",
+    "levelComplete": "Level Complete!",
 
     "checkProgress": "Hold up! \n You have saved progress! \n<color=#FF0000>If you continue, you will lose your progress!</color> \nWould you like to continue? ",
     "Level1NPC": "CADET INSTRUCTOR",
@@ -41,6 +42,7 @@
     "Level1Line4": "Let's start with the basics. <color=#FFDD00>Newton's Third Law of Motion refers to the principle that every action has an equal and opposite reaction.</color> ",
     "Level1Line5": "In other words, <color=#FFDD00>for every force exerted on an object, there is an equal and opposite force exerted back on the object. </color>",
     "Level1Line6": "Let's see an example of this in action! <color=#DD00FF>Use the LAUNCH button to try and collect the token and land safely back on the landing pad! </color>",
+    "WinScreen1": "Well done Cadet! you are well on your way to getting those <color=#00FFFF>Space Wings!</color> ",
     "Level2NPC": "CADET INSTRUCTOR",
     "Level2Line1": "Well done Cadet! you are well on your way to getting those <color=#00FFFF>Space Wings!</color> ",
     "Level2Line2": "This lesson is all about <color=#DD00FF>Manoeuvring.</color> I'll teach you how to move your spaceship around not just go up and down! ",

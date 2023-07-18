@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -29,6 +30,9 @@ public class SpaceshipController : MonoBehaviour
     [Header("Rotation Components")]
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float slowdownOnRotate;
+    [SerializeField] private AudioClip forwardThrusterSfx;
+    [SerializeField] private AudioClip sideThrusterSfx;
+    private AudioSource thrusterAudio; 
     
     // Private References 
     private bool canMove;
@@ -43,8 +47,9 @@ public class SpaceshipController : MonoBehaviour
         speedometer = FindObjectOfType<Speedometer>();
         // Set Fuel to maxFuel
         currentFuel = maxFuel; 
+        //Reference to Audio
+        thrusterAudio = GetComponent<AudioSource>(); 
 
-        
     }
 
     private void Update()
@@ -169,6 +174,7 @@ public class SpaceshipController : MonoBehaviour
     {
         if (!canMove) return; 
         
+        
         //Handle Acceleration
         currentThrust += currentThrust;
 
@@ -186,18 +192,60 @@ public class SpaceshipController : MonoBehaviour
     {
         thrustingForward = clicked;
         forwardThrusterEffect.SetActive(clicked);
+        
+        //SFX
+        if (GameManager.Instance.sound)
+        {
+            if (clicked)
+            {
+                thrusterAudio.clip = forwardThrusterSfx;
+                thrusterAudio.Play();
+            }
+            else
+            {
+                thrusterAudio.Stop();
+            }
+        }
+        
     }
 
     public void ClickLeft(bool clicked)
     {
         rotateRight = clicked;
         rightThrusterEffect.SetActive(clicked);
+        
+        if (GameManager.Instance.sound)
+        {
+            if (clicked)
+            {
+                thrusterAudio.clip = sideThrusterSfx;
+                thrusterAudio.Play();
+            }
+            else
+            {
+                thrusterAudio.Stop();
+            }
+        }
     }
 
     public void ClickRight(bool clicked)
     {
         rotateLeft = clicked;
         leftThrusterEffect.SetActive(clicked);
+
+        if (GameManager.Instance.sound)
+        {
+            if (clicked)
+            {
+                thrusterAudio.clip = sideThrusterSfx;
+                thrusterAudio.Play();
+            }
+            else
+            {
+                thrusterAudio.Stop();
+            }
+        }
+        
     }
 
     public void SpaceshipBroken()

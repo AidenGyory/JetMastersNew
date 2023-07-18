@@ -37,7 +37,11 @@ public class TypewriterEffect : MonoBehaviour
         for (int i = 1; i <= characterCount; i++)
         {
             textComponent.maxVisibleCharacters = i;
-            typeSFX.Play();
+            if (GameManager.Instance.sound)
+            {
+                typeSFX.Play();
+            }
+            
             yield return new WaitForSeconds(typingSpeed);
         }
 

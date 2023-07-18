@@ -3,6 +3,7 @@ using LoLSDK;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class SaveData
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
+    public bool sound;
 
     //Progression is an LoL concept, allows teachers to see how far through the game students are
     [Header("Progression")]
@@ -44,6 +46,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button btnNew, btnCont;
     public bool levelReset = false;
 
+    public AudioClip coinCollectSfx;
+    public AudioClip fuelCollectSfx; 
 
     private void Awake()
     {
@@ -164,5 +168,11 @@ public class GameManager : MonoBehaviour
 
         //Looks in Language.json and finds the key arg and returns value
         return SharedState.LanguageDefs[arg];
+    }
+    
+    //SFX toggle 
+    public void ToggleSound(bool toggle)
+    {
+        sound = toggle; 
     }
 }

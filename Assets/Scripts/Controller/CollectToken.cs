@@ -9,10 +9,16 @@ public class CollectToken : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (GameManager.Instance.sound)
+            {
+                GameManager.Instance.GetComponent<AudioSource>().PlayOneShot(GameManager.Instance.coinCollectSfx); 
+            }
             other.GetComponent<SpaceshipController>().tokensCollected++; 
             onTrigger?.Invoke(); 
-            Destroy(gameObject);
             LevelManager.Instance.CheckStarCritera();
+            Destroy(gameObject);
+            
+            
         }
     }
 

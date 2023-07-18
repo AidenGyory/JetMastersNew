@@ -9,7 +9,11 @@ public class FuelCannister : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            onTrigger?.Invoke(); 
+            if (GameManager.Instance.sound)
+            {
+                GameManager.Instance.GetComponent<AudioSource>().PlayOneShot(GameManager.Instance.fuelCollectSfx); 
+            }
+            onTrigger?.Invoke();
             Destroy(gameObject);
         }
     }
