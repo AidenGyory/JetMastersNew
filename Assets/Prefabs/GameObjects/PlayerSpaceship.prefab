@@ -244,8 +244,8 @@ MonoBehaviour:
   rotateRight: 0
   rotateSpeed: 200
   slowdownOnRotate: 15
-  forwardThrusterSfx: {fileID: 8300000, guid: 5c3995ea8f968964a93777bc5151b033, type: 3}
-  sideThrusterSfx: {fileID: 8300000, guid: e565103b8c4ea07419276c17678234fb, type: 3}
+  forwardThrusterSfx: {fileID: 8300000, guid: 9ea617961f73c834f865b526e0b555a3, type: 3}
+  sideThrusterSfx: {fileID: 8300000, guid: 52a1b2a06cdadab48b6091cfbad9af7b, type: 3}
 --- !u!61 &6541964919044160990
 BoxCollider2D:
   m_ObjectHideFlags: 0

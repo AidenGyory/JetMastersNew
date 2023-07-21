@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class ObjectiveMarker : MonoBehaviour
 {
@@ -19,13 +19,14 @@ public class ObjectiveMarker : MonoBehaviour
     private Camera cam;
     private void Start()
     {
-        cam = FindObjectOfType<Camera>(); 
+        cam = FindObjectOfType<Camera>();
     }
 
     private void Update()
     {
-        MoveToObjective();
+        
         CheckMarkerDistance();
+        MoveToObjective();
     }
 
     // Goes as close to the objective without going off the screen
@@ -34,7 +35,8 @@ public class ObjectiveMarker : MonoBehaviour
         var viewPos = cam.WorldToViewportPoint(objective.position);
         viewPos.x = Mathf.Clamp(viewPos.x, XminOffset, XmaxOffSet);
         viewPos.y = Mathf.Clamp(viewPos.y, YminOffset, YmaxOffSet);
-        transform.position = cam.ViewportToWorldPoint(viewPos);
+        Vector3 targetPosition = cam.ViewportToWorldPoint(viewPos);
+        transform.position = cam.ViewportToWorldPoint(viewPos); 
         
         // Look at the objective
         marker.transform.up = Vector3.Lerp(marker.transform.up,objective.position - transform.position, 8f);

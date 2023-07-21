@@ -1,6 +1,4 @@
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SpaceshipController : MonoBehaviour

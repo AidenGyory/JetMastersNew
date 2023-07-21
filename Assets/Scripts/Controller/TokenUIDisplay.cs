@@ -1,10 +1,9 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TokenUIDisplay : MonoBehaviour
 {
-    private int totalTokens;
+    public int totalTokens;
     private SpaceshipController player; 
     [SerializeField] private TMP_Text tokenUI;
 
@@ -12,8 +11,12 @@ public class TokenUIDisplay : MonoBehaviour
     {
         player = FindObjectOfType<SpaceshipController>(); 
         // Find all Tokens in Scene to establish MAX coins; 
-        var tokens = FindObjectsOfType<CollectToken>();
-        totalTokens = tokens.Length; 
+        if (totalTokens < 1)
+        {
+            var tokens = FindObjectsOfType<CollectToken>();
+            totalTokens = tokens.Length;
+        }
+         
     }
 
     private void Update()

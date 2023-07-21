@@ -137,7 +137,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public void CheckStarCritera()
+    public int CheckStarCritera()
     {
         if (player.tokensCollected >= tokensNeedForStar1)
         {
@@ -152,5 +152,7 @@ public class LevelManager : MonoBehaviour
         {
             starsCollected = 3; 
         }
+
+        return starsCollected; 
     }
 }
