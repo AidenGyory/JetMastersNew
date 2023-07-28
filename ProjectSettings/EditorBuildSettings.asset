@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
-    guid: 6a8b27d362d01fc488e4a9de8b91467e
+    guid: a91c3275fdb3cbd43a96c7e5d3fb85f9
   - enabled: 1
     path: Assets/Scenes/Levels/Level01.unity
     guid: 80418ce50dc5fed43a824934dde36c24
@@ -38,4 +38,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level08.unity
     guid: 9744c7ab5014cf041929f8b137268f1c
+  - enabled: 1
+    path: Assets/Scenes/EndGameScreen.unity
+    guid: 6a8b27d362d01fc488e4a9de8b91467e
   m_configObjects: {}

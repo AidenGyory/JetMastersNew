@@ -91,6 +91,11 @@ public class LevelManager : MonoBehaviour
 
     public void GoToLevelSelect()
     {
+        if (levelNumber == 8)
+        {
+            SceneManager.LoadScene("EndGameScreen");
+        }
+        else
         SceneManager.LoadScene("LevelSelect");
     }
     private void SaveLevel(int level)
