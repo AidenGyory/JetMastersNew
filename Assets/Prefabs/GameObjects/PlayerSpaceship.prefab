@@ -208,7 +208,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 5
+  m_GravityScale: 2.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -232,7 +232,7 @@ MonoBehaviour:
   maxFuel: 25
   currentFuel: 0
   currentThrust: 1
-  maxThrust: 8000
+  maxThrust: 4000
   velocityRead: 0
   spaceShip: {fileID: 5137748496307968127}
   spaceShipBroken: {fileID: 21300000, guid: 7ac3683169cd1e849b2e8f2f8cf9b42b, type: 3}

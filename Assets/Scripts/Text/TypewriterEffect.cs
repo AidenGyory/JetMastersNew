@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TypewriterEffect : MonoBehaviour
 {
@@ -14,9 +16,13 @@ public class TypewriterEffect : MonoBehaviour
 
     private int characterCount;
     private Coroutine typingCoroutine;
+    public float timer; 
+    [SerializeField] Button continueBtn; 
 
     public void StartTypewriterEffect(string text)
     {
+        timer = 0f;
+        continueBtn.interactable = false; 
         // Stop any existing typewriter coroutine
         if (typingCoroutine != null)
         {
@@ -29,6 +35,18 @@ public class TypewriterEffect : MonoBehaviour
 
         // Start the typewriter coroutine
         typingCoroutine = StartCoroutine(TypeText());
+    }
+
+    private void Update()
+    {
+        if (timer < 5f)
+        {
+            timer += Time.deltaTime; 
+        }
+        else
+        {
+            continueBtn.interactable = true; 
+        }
     }
 
     private IEnumerator TypeText()

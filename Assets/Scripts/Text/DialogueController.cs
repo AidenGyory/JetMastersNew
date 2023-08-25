@@ -80,7 +80,10 @@ public class DialogueController : MonoBehaviour
         //check if the line was still typing or not
         if (!typewriter.CompleteTypeWriter())
         {
-            NextLine();
+            if (typewriter.timer > 5)
+            {
+                NextLine();
+            }
         }
     }
 

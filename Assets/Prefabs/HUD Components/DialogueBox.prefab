@@ -485,6 +485,7 @@ MonoBehaviour:
   typingSpeed: 0.02
   textComponent: {fileID: 6979307578938313386}
   typeSFX: {fileID: 3376883679879272511}
+  continueBtn: {fileID: 5430201964397993204}
 --- !u!82 &3376883679879272511
 AudioSource:
   m_ObjectHideFlags: 0
