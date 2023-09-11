@@ -85,6 +85,8 @@ public class LevelManager : MonoBehaviour
             SaveLevel(levelNumber); 
             GameManager.Instance.Save();
         }
+
+        GameManager.Instance.SubmitProgress(0);
         //go back to level select
         GoToLevelSelect();
     }
