@@ -43,7 +43,7 @@
     "hint6": "<color=#FFDD00>Hint:</color>Try lightly tapping on your thrusters to make more accurate turns and keep your speed down!",
     "hint7": "<color=#FFDD00>Hint:</color>If the force of the asteroid is equal to the force of the spaceship, then the spaceship will not take damage when it collides.",
     "hint8": "<color=#FFDD00>Hint:</color>Objects with larger mass will require much more force to move! Try to avoid them!",
-    "checkProgress": "Hold up! \n You have saved progress! \n<color=#FF0000>If you continue, you will lose your progress!</color> \nWould you like to continue? ", //this sentence is confusing - have they saved or have they not
+    "checkProgress": "Hold up! \n You have saved progress! \n<color=#FF0000>If you continue, you will lose your progress!</color> \nWould you like to continue? ",
     "objective1": "<color=#DD00FF>Objective: Collect the Rocket Token and return it safely to the launch pad!</color>",
     "Level1NPC": "CADET INSTRUCTOR",
     "Level1Line1": "Welcome to the space program, Cadet! I will be your instructor before you get into orbit! ",
@@ -149,7 +149,7 @@
     "hint6": "<color=#FFDD00>Hint:</color>Try lightly tapping on your thrusters to make more accurate turns and keep your speed down!",
     "hint7": "<color=#FFDD00>Hint:</color>If the force of the asteroid is equal to the force of the spaceship, then the spaceship will not take damage when it collides.",
     "hint8": "<color=#FFDD00>Hint:</color>Objects with larger mass will require much more force to move! Try to avoid them!",
-    "checkProgress": "Hold up! \n You have saved progress! \n<color=#FF0000>If you continue, you will lose your progress!</color> \nWould you like to continue? ", //this sentence is confusing - have they saved or have they not
+    "checkProgress": "Hold up! \n You have saved progress! \n<color=#FF0000>If you continue, you will lose your progress!</color> \nWould you like to continue? ",
     "objective1": "<color=#DD00FF>Objective: Collect the Rocket Token and return it safely to the launch pad!</color>",
     "Level1NPC": "CADET INSTRUCTOR",
     "Level1Line1": "Welcome to the space program, Cadet! I will be your instructor before you get into orbit! ",
