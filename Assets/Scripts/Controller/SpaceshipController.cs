@@ -209,8 +209,8 @@ public class SpaceshipController : MonoBehaviour
 
     public void ClickLeft(bool clicked)
     {
-        rotateRight = clicked;
-        rightThrusterEffect.SetActive(clicked);
+        rotateLeft = clicked;
+        leftThrusterEffect.SetActive(clicked);
         
         if (GameManager.Instance.sound)
         {
@@ -228,8 +228,8 @@ public class SpaceshipController : MonoBehaviour
 
     public void ClickRight(bool clicked)
     {
-        rotateLeft = clicked;
-        leftThrusterEffect.SetActive(clicked);
+        rotateRight = clicked;
+        rightThrusterEffect.SetActive(clicked);
 
         if (GameManager.Instance.sound)
         {
